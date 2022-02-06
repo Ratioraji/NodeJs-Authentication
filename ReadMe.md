@@ -7,3 +7,7 @@ Simple NodeJs Server
 npm install - To install all modules
 
 npm run dev -  To start server
+
+## Login
+
+Any valid email and password works
