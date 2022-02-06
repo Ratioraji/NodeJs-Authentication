@@ -5,9 +5,6 @@ import {
 } from 'express';
 import { employeeData } from '../helpers/data';
 import {
-    ErrorCode,
-    ErrorMsg,
-    errorHandler,
     sendJSONResponse,
 } from '../helpers/responseHandler';
 import {
@@ -26,7 +23,7 @@ export default class AuthenticationController {
             }
 
             const rawToken = req.body.refreshToken.replace('JWT ', '');
-            const token = jwt.decode(rawToken, process.env.authSecret);
+            const token = await jwt.decode(rawToken, process.env.authSecret);
             console.log(token);
             if (!token.userId || !token.jti) {
                 res.status(500);
